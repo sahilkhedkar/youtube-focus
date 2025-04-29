@@ -15,6 +15,8 @@ A Chrome extension that hides YouTube comments, sidebar, and header to help you 
 2. Open `chrome://extensions`
 3. Turn on **Developer Mode**
 4. Click **Load Unpacked**
-5. Select the `youtube-minimal-extension` folder
+5. Select the `youtube-extension` folder
+6. Now open the youtube and click on the extension icon and select the youtube minimal mode extension
+7. Enjoy the focus mode
 
 
