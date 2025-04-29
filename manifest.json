@@ -1,0 +1,18 @@
+{
+    "manifest_version": 3,
+    "name": "YouTube Minimal Mode",
+    "version": "2.0",
+    "description": "Toggle YouTube distractions on/off.",
+    "permissions": ["storage", "activeTab", "scripting"],
+    "action": {
+      "default_popup": "popup.html"
+    },
+    "content_scripts": [
+      {
+        "matches": ["*://www.youtube.com/*"],
+        "js": ["content.js"],
+        "run_at": "document_idle"
+      }
+    ]
+  }
+  
