@@ -1,20 +1,17 @@
 {
   "manifest_version": 3,
-  "name": "YT Minimal Viewer",
+  "name": "YouTube Focus Mode",
+  "description": "Hide distractions on YouTube while watching videos.",
   "version": "1.0",
-  "description": "Clean up YouTube's interface by hiding distractions like comments, sidebar, and suggestions.",
-  "permissions": ["scripting", "tabs", "storage"],
+  "permissions": ["scripting", "activeTab"],
   "action": {
     "default_popup": "controller.html"
-  },
-  "background": {
-    "service_worker": "events.js"
   },
   "content_scripts": [
     {
       "matches": ["*://www.youtube.com/*"],
       "js": ["viewerToggle.js"],
-      "css": ["ui.css"]
+      "run_at": "document_idle"
     }
   ]
 }
