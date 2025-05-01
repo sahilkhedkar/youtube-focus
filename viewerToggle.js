@@ -1,29 +1,23 @@
+
 const elementsToHide = [
-  { id: "#comments", label: "Hide Comments" },
-  { id: "#secondary", label: "Hide Sidebar" },
-  { id: "#footer", label: "Hide Footer" },
-  { id: "#related", label: "Hide Related Videos" },
+  "#comments",
+  "#secondary",      
+  "#related",        
+  "#footer"
 ];
 
-function toggleElement(selector, shouldHide) {
-  const el = document.querySelector(selector);
-  if (el) {
-    el.style.display = shouldHide ? "none" : "";
-  }
-}
+function hideDistractions() {
+  const onWatchPage = window.location.href.includes("/watch");
 
-function applyUserSettings() {
-  const isWatchPage = window.location.href.includes("/watch");
-
-  elementsToHide.forEach(({ id }) => {
-    const checkbox = document.getElementById(`toggle-${id}`);
-    if (checkbox) {
-      toggleElement(id, isWatchPage && checkbox.checked);
+  elementsToHide.forEach(selector => {
+    const el = document.querySelector(selector);
+    if (el) {
+      el.style.display = onWatchPage ? "none" : "";
     }
   });
 }
 
-document.addEventListener("DOMContentLoaded", applyUserSettings);
+window.addEventListener("load", hideDistractions);
 
-const observer = new MutationObserver(applyUserSettings);
+const observer = new MutationObserver(hideDistractions);
 observer.observe(document.body, { childList: true, subtree: true });
