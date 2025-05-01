@@ -5,12 +5,7 @@
   "description": "Clean up YouTube's interface by hiding distractions like comments, sidebar, and suggestions.",
   "permissions": ["scripting", "tabs", "storage"],
   "action": {
-    "default_popup": "controller.html",
-    "default_icon": {
-      "16": "icon16.png",
-      "48": "icon48.png",
-      "128": "icon128.png"
-    }
+    "default_popup": "controller.html"
   },
   "background": {
     "service_worker": "events.js"
@@ -21,10 +16,5 @@
       "js": ["viewerToggle.js"],
       "css": ["ui.css"]
     }
-  ],
-  "icons": {
-    "16": "icon16.png",
-    "48": "icon48.png",
-    "128": "icon128.png"
-  }
+  ]
 }
