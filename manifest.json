@@ -3,7 +3,7 @@
   "name": "YT Minimal Viewer",
   "version": "1.0",
   "description": "Clean up YouTube's interface by hiding distractions like comments, sidebar, and suggestions.",
-  "permissions": ["scripting", "tabs"],
+  "permissions": ["scripting", "tabs", "storage"],
   "action": {
     "default_popup": "controller.html",
     "default_icon": {
