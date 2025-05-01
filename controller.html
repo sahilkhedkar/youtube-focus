@@ -1,44 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>YT Minimal Viewer</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      padding: 12px;
-      width: 200px;
-    }
-    button {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 10px;
-      background-color: #ff0000;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #cc0000;
-    }
-    label {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 10px;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Focus Controls</title>
+  <link rel="stylesheet" href="ui.css">  
+  <script src="viewerToggle.js" defer></script>  
 </head>
 <body>
-  <button id="cleanOn">Activate Minimal View</button>
-  <button id="cleanOff">Restore View</button>
-
-  <label>
-    <input type="checkbox" id="themeToggle" />
-    Dark Mode
-  </label>
-
-  <script src="controller.js"></script>
+  <div id="user-controls">
+    <h3>Choose what to hide:</h3>
+    <div class="checkbox-container">
+      <input type="checkbox" id="toggle-#comments" checked />
+      <label for="toggle-#comments">Hide Comments</label>
+    </div>
+    <div class="checkbox-container">
+      <input type="checkbox" id="toggle-#secondary" checked />
+      <label for="toggle-#secondary">Hide Sidebar</label>
+    </div>
+    <div class="checkbox-container">
+      <input type="checkbox" id="toggle-#masthead-container" checked />
+      <label for="toggle-#masthead-container">Hide YouTube Header</label>
+    </div>
+    <div class="checkbox-container">
+      <input type="checkbox" id="toggle-#related" checked />
+      <label for="toggle-#related">Hide Related Videos</label>
+    </div>
+    <div class="checkbox-container">
+      <input type="checkbox" id="toggle-#footer" checked />
+      <label for="toggle-#footer">Hide Footer</label>
+    </div>
+  </div>
 </body>
 </html>
