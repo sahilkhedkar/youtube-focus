@@ -19,7 +19,7 @@
     {
       "matches": ["*://www.youtube.com/*"],
       "js": ["viewerToggle.js"],
-      "css": ["ytui.css"]
+      "css": ["ui.css"]
     }
   ],
   "icons": {
