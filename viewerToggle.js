@@ -27,5 +27,3 @@ chrome.runtime.onMessage.addListener((msg) => {
   if (msg.toggle === "on") applyMinimalView();
   else if (msg.toggle === "off") restoreLayout();
 });
-
-  
