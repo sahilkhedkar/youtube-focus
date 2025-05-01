@@ -21,9 +21,20 @@ function restoreLayout() {
     const el = document.querySelector(selector);
     if (el) el.style.display = '';
   });
+
+  document.body.removeAttribute("data-theme");
+}
+
+function applyTheme(theme) {
+  document.body.setAttribute("data-theme", theme);
 }
 
 chrome.runtime.onMessage.addListener((msg) => {
   if (msg.toggle === "on") applyMinimalView();
   else if (msg.toggle === "off") restoreLayout();
+  if (msg.theme) applyTheme(msg.theme);
+});
+
+chrome.storage.sync.get("yt_theme", data => {
+  if (data.yt_theme) applyTheme(data.yt_theme);
 });
