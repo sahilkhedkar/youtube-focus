@@ -6,14 +6,23 @@ body, html {
   transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-body[data-theme="dark"] {
-  background-color: #111 !important;
-  color: #fff !important;
+#logo,
+#search {
+  display: block !important;
 }
 
-body[data-theme="light"] {
-  background-color: #f9f9f9 !important;
-  color: #111 !important;
+#comments,
+#secondary,
+ytd-video-secondary-info-renderer,
+ytd-merch-shelf-renderer,
+ytd-watch-next-secondary-results-renderer,
+ytd-item-section-renderer,
+#masthead-container,
+#related,
+#footer {
+  display: none !important;
+  opacity: 0 !important;
+  transition: opacity 0.3s ease-out;
 }
 
 #player {
@@ -25,27 +34,14 @@ body[data-theme="light"] {
   overflow: hidden;
 }
 
-#comments,
-#secondary,
-ytd-video-secondary-info-renderer,
-ytd-merch-shelf-renderer,
-ytd-watch-next-secondary-results-renderer,
-ytd-item-section-renderer,
-#masthead-container,
-#related,
-#footer,
-ytd-metadata-row-container-renderer {
-  display: none !important;
-  opacity: 0 !important;
-  transition: opacity 0.3s ease-out;
+body[data-theme="dark"] {
+  background-color: #111 !important;
+  color: #fff !important;
 }
 
-.ytd-app, .ytd-watch-flexy {
-  display: flex !important;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding-top: 20px;
+body[data-theme="light"] {
+  background-color: #f9f9f9 !important;
+  color: #111 !important;
 }
 
 #player:hover {
