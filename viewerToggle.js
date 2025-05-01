@@ -1,51 +1,29 @@
-
 const elementsToHide = [
-  '#comments',                               // Comment section
-  '#secondary',                              // Sidebar with related videos
-  '#masthead-container',                     // YouTube top navbar (for logo and controls)
-  '#related',                                // Related video section
-  '#footer'                                  // Footer section
+  { id: "#comments", label: "Hide Comments" },
+  { id: "#secondary", label: "Hide Sidebar" },
+  { id: "#footer", label: "Hide Footer" },
+  { id: "#related", label: "Hide Related Videos" },
 ];
 
-const alwaysVisible = [
-  '#logo',                                   // YouTube home logo
-  '#search',                                 // Search bar
-  'video'                                    // Video player itself
-];
-
-function toggleVisibility(elementId, action) {
-  const element = document.querySelector(elementId);
-  if (element) {
-    element.style.display = action === 'hide' ? 'none' : 'block';
+function toggleElement(selector, shouldHide) {
+  const el = document.querySelector(selector);
+  if (el) {
+    el.style.display = shouldHide ? "none" : "";
   }
 }
 
-function applyMinimalView() {
-  elementsToHide.forEach(id => {
-    const checkbox = document.querySelector(`#toggle-${id}`);
-    if (checkbox && checkbox.checked) {
-      toggleVisibility(id, 'hide');
-    } else {
-      toggleVisibility(id, 'show');
+function applyUserSettings() {
+  const isWatchPage = window.location.href.includes("/watch");
+
+  elementsToHide.forEach(({ id }) => {
+    const checkbox = document.getElementById(`toggle-${id}`);
+    if (checkbox) {
+      toggleElement(id, isWatchPage && checkbox.checked);
     }
   });
 }
 
-function setupVideoPlayer() {
-  const video = document.querySelector('video');
-  if (video) {
-    video.addEventListener('play', () => {
-      applyMinimalView();  
-    });
-    video.addEventListener('pause', () => {
-      applyMinimalView();  // Apply minimal view when video is paused
-    });
-  }
-}
+document.addEventListener("DOMContentLoaded", applyUserSettings);
 
-chrome.runtime.onMessage.addListener((msg) => {
-  if (msg.toggle === "on") applyMinimalView();  // Apply minimal view when toggle is on
-  else if (msg.toggle === "off") applyMinimalView();  // Restore view when toggle is off
-});
-
-setupVideoPlayer();
+const observer = new MutationObserver(applyUserSettings);
+observer.observe(document.body, { childList: true, subtree: true });
